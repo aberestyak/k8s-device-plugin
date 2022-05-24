@@ -17,6 +17,7 @@ config:
   default: null
   files: []
 
+disableHealthchecks: true
 legacyDaemonsetAPI: null
 compatWithCPUManager: null
 migStrategy: null

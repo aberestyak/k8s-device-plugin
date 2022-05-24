@@ -73,6 +73,12 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: nvidia-device-plugin-ctr
         env:
+        {{- if hasKey .Values "disableHealthchecks" }}
+        {{- if .Values.disableHealthchecks }}
+          - name: DP_DISABLE_HEALTHCHECKS
+            value: xids
+        {{- end }}
+        {{- end }}
         {{- if typeIs "string" .Values.migStrategy }}
           - name: MIG_STRATEGY
             value: "{{ .Values.migStrategy }}"
